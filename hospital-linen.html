@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hospital Linen | Aura Inc</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="contact-strip">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2 py-2">
+      <div class="small fw-semibold">Hospital Linen Collection</div>
+      <div class="small fw-semibold">+91 8739953655 | aura.care@hotmail.com</div>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand-lg bg-white shadow-sm main-nav">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <img src="assets/logo.jpg" alt="Aura Inc" class="logo-sm" />
+        <span class="brand-text">AURA INC</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto gap-lg-2">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="hospital-linen.html">Hospital Linen</a></li>
+          <li class="nav-item"><a class="nav-link" href="hotel-linen.html">Hotel Linen</a></li>
+          <li class="nav-item"><a class="nav-link" href="coming-soon.html">Home Linen</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero-banner slim-hero">
+    <div class="container d-flex align-items-center gap-4 flex-wrap">
+      <img src="assets/logo.jpg" alt="Aura Logo" class="logo-lg" />
+      <div>
+        <h1 class="hero-title mb-1">Hospital Linen</h1>
+        <p class="mb-0 breadcrumb-like">Home / Hospital Linen</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="py-5 bg-light">
+    <div class="container">
+      <div class="row g-4">
+        <aside class="col-lg-3">
+          <div class="sidebar-box">
+            <h4>Product Categories</h4>
+            <ul>
+              <li>Bed Sheet</li>
+              <li>Fitted Sheet</li>
+              <li>Duvet Cover</li>
+              <li>Blanket & Throw</li>
+              <li>Pillow</li>
+              <li>Pillowcase</li>
+              <li class="active-item">Hospital Linen</li>
+              <li><a href="hotel-linen.html">Hotel Linen</a></li>
+              <li><a href="coming-soon.html">Home Linen</a></li>
+            </ul>
+          </div>
+        </aside>
+        <section class="col-lg-9">
+          <div class="row g-4" id="hospitalProducts"></div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const hospitalProducts = [
+      { name: "OT Green Cap (Autoclavable)", img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=700&q=80" },
+      { name: "OT Green Mask (Autoclavable)", img: "https://images.unsplash.com/photo-1603398938378-e54eab446dde?auto=format&fit=crop&w=700&q=80" },
+      { name: "Dental Patient Apron", img: "https://images.unsplash.com/photo-1576765608866-5b51046452be?auto=format&fit=crop&w=700&q=80" },
+      { name: "OT Gown Casement Fabric", img: "https://images.unsplash.com/photo-1666214280391-8ff5bd3c0bf0?auto=format&fit=crop&w=700&q=80" },
+      { name: "Patient Maternity Gown", img: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=700&q=80" },
+      { name: "Scrubs for Nursing Staff", img: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=700&q=80" },
+      { name: "White Bed Sheet & Pillow Cover", img: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=700&q=80" },
+      { name: "OT Sheets with Hole", img: "https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?auto=format&fit=crop&w=700&q=80" },
+      { name: "Blanket", img: "https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=700&q=80" }
+    ];
+
+    const hospitalGrid = document.getElementById("hospitalProducts");
+    hospitalProducts.forEach((product, index) => {
+      const slug = encodeURIComponent(product.name);
+      hospitalGrid.innerHTML += `
+        <div class="col-md-6 col-xl-4">
+          <a href="product-detail.html?category=hospital&name=${slug}&img=${encodeURIComponent(product.img)}" class="text-decoration-none text-dark">
+            <article class="product-card">
+              <img src="${product.img}" class="img-fluid" alt="${product.name}" />
+              <h3>${index + 1}. ${product.name}</h3>
+            </article>
+          </a>
+        </div>
+      `;
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
