@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -8,21 +8,27 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=20260227-1" />
+  <link rel="stylesheet" href="styles.css?v=20260313-1" />
 </head>
 <body>
   <div class="contact-strip">
     <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2 py-2">
       <div class="small fw-semibold">Hospital Linen Collection</div>
-      <div class="small fw-semibold">+91 8739953655 | aura.care@hotmail.com</div>
+      <div class="d-flex gap-2 flex-wrap small fw-semibold">
+        <span class="contact-chip">+91 8739953655</span>
+        <span class="contact-chip">aura.care@hotmail.com</span>
+      </div>
     </div>
   </div>
 
-  <nav class="navbar navbar-expand-lg bg-white shadow-sm main-nav">
+  <nav class="navbar navbar-expand-lg main-nav">
     <div class="container">
-      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
-        <img src="assets/logo.jpg" alt="Aura Inc" class="logo-sm" />
-        <span class="brand-text">AURA INC</span>
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="assets/Aura-logo-1.png" alt="Aura Inc logo" class="logo-sm" />
+        <span class="brand-text">
+          <strong>AURA INC</strong>
+          <span>Care-focused textile collections</span>
+        </span>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -38,19 +44,25 @@
     </div>
   </nav>
 
-  <header class="hero-banner slim-hero">
-    <div class="container d-flex align-items-center gap-4 flex-wrap">
-      <img src="assets/logo.jpg" alt="Aura Logo" class="logo-lg" />
-      <div>
-        <h1 class="hero-title mb-1">Hospital Linen</h1>
-        <p class="mb-0 breadcrumb-like">Home / Hospital Linen</p>
+  <header class="page-hero">
+    <div class="container">
+      <div class="page-hero-card">
+        <div class="hero-stack">
+          <img src="assets/Aura-logo-1.png" alt="Aura logo" class="logo-lg" />
+          <div>
+            <span class="eyebrow text-white">Hospital Catalogue</span>
+            <h1 class="display-title" style="font-size: clamp(2.2rem, 5vw, 4rem);">Hospital Linen</h1>
+            <p class="breadcrumb-like mb-2">Home / Hospital Linen</p>
+            <p class="muted-copy mb-0">A cleaner and more modern product catalogue view for healthcare textile essentials.</p>
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
-  <main class="py-5 bg-light">
+  <main class="section-spacing pt-0">
     <div class="container">
-      <div class="row g-4">
+      <div class="row product-layout">
         <aside class="col-lg-3">
           <div class="sidebar-box">
             <h4>Product Categories</h4>
@@ -59,10 +71,20 @@
               <li><a href="hotel-linen.html">Hotel Linen</a></li>
               <li><a href="coming-soon.html">Home Linen</a></li>
             </ul>
+            <div class="sidebar-note">
+              Browse the same catalogue structure with a more premium card layout and locally generated visual artwork.
+            </div>
           </div>
         </aside>
         <section class="col-lg-9">
-          <div class="row g-4" id="hospitalProducts"></div>
+          <div class="content-panel">
+            <div class="section-header mb-4">
+              <span class="eyebrow">Featured Range</span>
+              <h2 class="mb-2">Institution-ready products with a sharper visual experience.</h2>
+              <p class="section-copy mb-0">Each product card now uses original in-browser SVG visuals instead of third-party photos, keeping the site cleaner and safer to reuse.</p>
+            </div>
+            <div class="row g-4" id="hospitalProducts"></div>
+          </div>
         </section>
       </div>
     </div>
@@ -70,26 +92,57 @@
 
   <script>
     const hospitalProducts = [
-      { name: "OT Green Cap (Autoclavable)", img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=700&q=80" },
-      { name: "OT Green Mask (Autoclavable)", img: "https://images.unsplash.com/photo-1603398938378-e54eab446dde?auto=format&fit=crop&w=700&q=80" },
-      { name: "Dental Patient Apron", img: "https://images.unsplash.com/photo-1576765608866-5b51046452be?auto=format&fit=crop&w=700&q=80" },
-      { name: "OT Gown Casement Fabric", img: "https://images.unsplash.com/photo-1666214280391-8ff5bd3c0bf0?auto=format&fit=crop&w=700&q=80" },
-      { name: "Patient Maternity Gown", img: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=700&q=80" },
-      { name: "Scrubs for Nursing Staff", img: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=700&q=80" },
-      { name: "White Bed Sheet & Pillow Cover", img: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=700&q=80" },
-      { name: "OT Sheets with Hole", img: "https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?auto=format&fit=crop&w=700&q=80" },
-      { name: "Blanket", img: "https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=700&q=80" }
+      { name: "OT Green Cap (Autoclavable)", theme: "surgical", accent: "#2fcfc5", note: "Reusable theatre-ready headwear with clean detailing." },
+      { name: "OT Green Mask (Autoclavable)", theme: "mask", accent: "#1fa89f", note: "Protective essentials styled for sterile workflows." },
+      { name: "Dental Patient Apron", theme: "apron", accent: "#d99a6c", note: "Easy-care patient coverage with a polished presentation." },
+      { name: "OT Gown Casement Fabric", theme: "gown", accent: "#4ac8bd", note: "Structured fabric illustration for theatre apparel collections." },
+      { name: "Patient Maternity Gown", theme: "patient", accent: "#e8ad7a", note: "Comfort-first garment visual for maternity care requirements." },
+      { name: "Scrubs for Nursing Staff", theme: "scrubs", accent: "#3cb9d9", note: "Professional uniform styling for daily healthcare operations." },
+      { name: "White Bed Sheet & Pillow Cover", theme: "bedsheet", accent: "#2b6d93", note: "Crisp bedding composition for patient room setups." },
+      { name: "OT Sheets with Hole", theme: "drape", accent: "#2fcfc5", note: "Procedure-specific drape illustration with modern depth." },
+      { name: "Blanket", theme: "blanket", accent: "#c88d60", note: "Soft layered textile preview for warmer care environments." }
     ];
+
+    function createProductArt(name, accent, theme) {
+      const safeName = name.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+          <defs>
+            <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#143b63" />
+              <stop offset="100%" stop-color="${accent}" />
+            </linearGradient>
+          </defs>
+          <rect width="800" height="800" rx="48" fill="url(#bg)" />
+          <circle cx="650" cy="160" r="130" fill="rgba(255,255,255,0.12)" />
+          <circle cx="150" cy="650" r="160" fill="rgba(255,255,255,0.08)" />
+          ${theme === "bedsheet" ? '<rect x="160" y="220" width="470" height="280" rx="30" fill="#fff"/><rect x="220" y="180" width="220" height="120" rx="28" fill="#eef7fb"/><rect x="150" y="500" width="500" height="90" rx="28" fill="#f7e7d8"/>' : ""}
+          ${theme === "blanket" ? '<rect x="170" y="210" width="470" height="330" rx="36" fill="#f4efe7"/><path d="M170 430C240 390 300 510 380 470C440 440 500 360 640 430V560H170V430Z" fill="#d99a6c"/>' : ""}
+          ${theme === "drape" ? '<rect x="170" y="170" width="460" height="430" rx="34" fill="#dbfbf8"/><circle cx="400" cy="400" r="72" fill="#143b63"/><circle cx="400" cy="400" r="40" fill="#f4efe7"/>' : ""}
+          ${theme === "gown" ? '<path d="M300 190H500L550 300L500 350V610H300V350L250 300L300 190Z" fill="#e8fffb"/><rect x="340" y="250" width="120" height="120" rx="20" fill="#b9efe8"/>' : ""}
+          ${theme === "patient" ? '<circle cx="400" cy="210" r="72" fill="#ffd7bf"/><path d="M265 350C265 290 315 242 375 242H425C485 242 535 290 535 350V610H265V350Z" fill="#fff4ec"/><rect x="315" y="325" width="170" height="250" rx="22" fill="#e7fff9"/>' : ""}
+          ${theme === "scrubs" ? '<circle cx="400" cy="205" r="70" fill="#ffd7bf"/><path d="M275 320L345 255H455L525 320L485 610H315L275 320Z" fill="#dffcff"/><rect x="345" y="352" width="110" height="84" rx="14" fill="#b7ece7"/>' : ""}
+          ${theme === "apron" ? '<rect x="260" y="170" width="280" height="430" rx="42" fill="#fff5ed"/><path d="M330 170C330 130 470 130 470 170V225H330V170Z" fill="#ffe0ca"/><rect x="320" y="320" width="160" height="150" rx="24" fill="#ecf9ff"/>' : ""}
+          ${theme === "mask" ? '<rect x="210" y="270" width="380" height="220" rx="60" fill="#e5fff8"/><path d="M210 350C155 330 140 300 132 254" stroke="#d2f8f2" stroke-width="20" fill="none"/><path d="M590 350C645 330 660 300 668 254" stroke="#d2f8f2" stroke-width="20" fill="none"/><rect x="250" y="318" width="300" height="26" rx="13" fill="#c4f2eb"/><rect x="250" y="372" width="300" height="26" rx="13" fill="#c4f2eb"/>' : ""}
+          ${theme === "surgical" ? '<circle cx="400" cy="220" r="86" fill="#bdf4ee"/><rect x="320" y="290" width="160" height="290" rx="70" fill="#e5fff8"/><circle cx="400" cy="220" r="34" fill="#143b63"/>' : ""}
+          <text x="70" y="700" fill="#ffffff" font-family="Arial, sans-serif" font-size="34" font-weight="700">${safeName}</text>
+        </svg>`;
+      return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+    }
 
     const hospitalGrid = document.getElementById("hospitalProducts");
     hospitalProducts.forEach((product, index) => {
       const slug = encodeURIComponent(product.name);
+      const image = createProductArt(product.name, product.accent, product.theme);
       hospitalGrid.innerHTML += `
         <div class="col-md-6 col-xl-4">
-          <a href="product-detail.html?category=hospital&name=${slug}&img=${encodeURIComponent(product.img)}" class="text-decoration-none text-dark">
+          <a href="product-detail.html?category=hospital&name=${slug}&theme=${product.theme}&accent=${encodeURIComponent(product.accent)}" class="text-decoration-none text-dark">
             <article class="product-card">
-              <img src="${product.img}" class="img-fluid" alt="${product.name}" />
+              <div class="product-art">
+                <img src="${image}" alt="${product.name}" />
+              </div>
               <h3>${index + 1}. ${product.name}</h3>
+              <p>${product.note}</p>
             </article>
           </a>
         </div>
@@ -99,4 +152,3 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
