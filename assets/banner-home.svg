@@ -1,0 +1,18 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" rx="40" fill="#12263E"/>
+  <circle cx="1340" cy="150" r="230" fill="#E08C62" fill-opacity="0.18"/>
+  <circle cx="210" cy="760" r="260" fill="#2FD0C8" fill-opacity="0.16"/>
+  <rect x="116" y="132" width="820" height="628" rx="40" fill="#193353"/>
+  <rect x="220" y="300" width="380" height="250" rx="28" fill="#F7F2E8"/>
+  <rect x="652" y="242" width="180" height="240" rx="30" fill="#D9F5F3"/>
+  <circle cx="770" cy="260" r="44" fill="#F2C8B1"/>
+  <rect x="692" y="544" width="140" height="140" rx="70" fill="#D6A15D"/>
+  <rect x="260" y="250" width="300" height="80" rx="24" fill="#FFFFFF"/>
+  <rect x="308" y="352" width="204" height="120" rx="26" fill="#FFFFFF"/>
+  <rect x="1002" y="214" width="372" height="224" rx="34" fill="#F7F2E8"/>
+  <path d="M1120 266C1120 231.758 1147.76 204 1182 204C1216.24 204 1244 231.758 1244 266V288H1272C1292.99 288 1310 305.013 1310 326V370C1310 390.987 1292.99 408 1272 408H1092C1071.01 408 1054 390.987 1054 370V326C1054 305.013 1071.01 288 1092 288H1120V266Z" fill="#2FD0C8" fill-opacity="0.85"/>
+  <rect x="958" y="516" width="434" height="190" rx="34" fill="#193353" stroke="#E08C62" stroke-width="4"/>
+  <text x="1002" y="594" fill="#F7F2E8" font-family="Arial, sans-serif" font-size="48" font-weight="700">Home Linen</text>
+  <text x="1002" y="652" fill="#D8E3EE" font-family="Arial, sans-serif" font-size="28">Contemporary comfort designed for</text>
+  <text x="1002" y="690" fill="#D8E3EE" font-family="Arial, sans-serif" font-size="28">everyday rooms and relaxed living.</text>
+</svg>
