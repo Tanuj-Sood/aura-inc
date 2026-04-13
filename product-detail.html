@@ -179,7 +179,7 @@
     const name = decodeURIComponent(params.get("name") || "Hospital Linen Product");
     const theme = params.get("theme") || "default";
     const accent = decodeURIComponent(params.get("accent") || "#2fcfc5");
-    const category = (params.get("category") || "hospital").toLowerCase();
+    const category = (params.get("category") || "Hospital");
     const detailContent = productMedia[category]?.[name];
     const galleryImages = detailContent?.images?.length
       ? detailContent.images
