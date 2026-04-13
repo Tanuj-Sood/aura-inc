@@ -46,31 +46,35 @@
           <div class="col-lg-6">
             <p id="productCategory" class="detail-category mb-3">Category</p>
             <h1 id="productName" class="display-title" style="font-size: clamp(2.1rem, 4vw, 3.8rem);">Product Name</h1>
-            <p class="section-copy mb-3">
-              This detail page now follows the same modern visual system as the catalogue pages, while still preserving the simple product-detail flow already present in your site.
-            </p>
-            <p class="section-copy mb-0">
-              The product artwork is generated locally from the chosen category and theme, keeping the experience visually rich without needing external stock photos.
-            </p>
+            <p id="productSubtitle" class="detail-subtitle mb-3"></p>
+            <p id="productLead" class="section-copy mb-0"></p>
 
-            <div class="spec-grid">
-              <div class="spec-card">
-                <strong>Presentation</strong>
-                <span class="muted-copy">Clean visual detail card with a premium layout.</span>
-              </div>
-              <div class="spec-card">
-                <strong>Consistency</strong>
-                <span class="muted-copy">Same color, typography and logo treatment as the rest of the site.</span>
-              </div>
-              <div class="spec-card">
-                <strong>Navigation</strong>
-                <span class="muted-copy">Returns directly to the matching catalogue section.</span>
-              </div>
-            </div>
+            <div id="productHighlights" class="spec-grid"></div>
 
             <a id="backLink" href="hospital-linen.html" class="btn-brand mt-4">Back to Catalogue</a>
           </div>
         </div>
+
+        <div id="productNarrative" class="detail-story"></div>
+
+        <section id="productSpecsSection" class="detail-specs-section">
+          <div class="section-header mb-4">
+            <span class="eyebrow">Technical Details</span>
+            <h2 class="mb-2">Product specifications</h2>
+            <p class="section-copy mb-0">A structured view of the approved OT Green Mask details for hospital buyers and procurement teams.</p>
+          </div>
+          <div class="detail-spec-table-wrap">
+            <table class="detail-spec-table">
+              <thead>
+                <tr>
+                  <th>Specification</th>
+                  <th>Details</th>
+                </tr>
+              </thead>
+              <tbody id="productSpecsTable"></tbody>
+            </table>
+          </div>
+        </section>
       </div>
     </div>
   </main>
@@ -92,7 +96,58 @@
             "assets/OT_GREEN_MASK_1.jpeg",
             "assets/OT_GREEN_MASK_2.jpeg"
           ],
-          description: "Autoclavable OT green mask presented with the same gallery layout for quick image browsing."
+          subtitle: "Reusable autoclavable cotton cloth face mask, Doctor OT Mask, surgical mask, free size.",
+          description: "Provide your doctors and healthcare faculty with the comfort they deserve through our soft, durable, and comfortable OT Mask, designed for reliability, hygiene, and long-term professional use. Manufactured with premium materials and expert precision, it delivers a practical balance between comfort and performance for hospitals, clinics, and healthcare facilities of all sizes.",
+          highlights: [
+            { title: "Material", value: "100% Cotton" },
+            { title: "Fabric Density", value: "230 GSM" },
+            { title: "Size", value: "Free Size" },
+            { title: "Wash Durability", value: "100+ Industrial Wash Cycles" },
+            { title: "Weaving Type", value: "Plain / Twill" },
+            { title: "Feature", value: "Soft, Durable, Breathable, Hygienic, Autoclavable" }
+          ],
+          sections: [
+            {
+              title: "Premium Fabric for Medical Environments",
+              body: "Our OT mask is made from carefully selected cotton fabric. Each thread is woven tightly to ensure excellent strength while maintaining softness and breathability. The fabric allows air circulation, helping regulate comfort during long professional shifts."
+            },
+            {
+              title: "Softness That Lasts",
+              body: "Unlike ordinary fabrics, this OT mask retains its soft texture even after repeated industrial washing. The high-quality yarn helps provide lasting comfort for daily clinical use."
+            },
+            {
+              title: "Precision Manufacturing from a Trusted Supplier",
+              body: "We uphold strict quality standards in every production stage, from yarn selection to stitching and final finishing. Each batch is checked for consistency, durability, and size accuracy to meet practical healthcare requirements."
+            },
+            {
+              title: "Durability and Easy Maintenance",
+              body: "This OT mask is designed to endure 100+ wash cycles while maintaining its shape, colour, and softness. It dries easily, resists wrinkles after care, and stays fresh after repeated sterilization."
+            },
+            {
+              title: "Hygienic and Professional",
+              body: "Hygiene is essential in healthcare, and this mask is built for breathable, reliable, and comfortable use. Its smooth finish supports a clean, professional appearance across hospital and clinic environments."
+            },
+            {
+              title: "Sustainable and Responsible Production",
+              body: "Our production approach uses low-impact processes and quality-focused manufacturing standards, helping healthcare buyers source durable products with responsible long-term value."
+            },
+            {
+              title: "OEM and ODM Customization Options",
+              body: "Customization support is available for healthcare and institutional orders when required. We can assist with broader production planning while keeping the OT mask range aligned with your supply needs."
+            }
+          ],
+          specTable: [
+            { label: "Product Name", value: "OT Mask" },
+            { label: "Material", value: "100% Cotton" },
+            { label: "Fabric Density", value: "230 GSM" },
+            { label: "Color Options", value: "Blue, Green" },
+            { label: "Weaving Type", value: "Plain / Twill" },
+            { label: "Size", value: "Free Size" },
+            { label: "Feature", value: "Soft, Durable, Breathable, Hygienic, Autoclavable" },
+            { label: "Function", value: "Anti-Wrinkle, Quick-Dry, Fade-Resistant" },
+            { label: "Usage", value: "Hospital, Clinic, Nursing Home, Healthcare Facility" },
+            { label: "Wash Durability", value: "100+ Industrial Wash Cycles" }
+          ]
         }
       }
     };
@@ -130,19 +185,62 @@
       ? detailContent.images
       : [createProductArt(name, accent, theme, category)];
 
-    document.getElementById("productName").textContent = name;
-    document.getElementById("productImage").src = galleryImages[0];
-    document.getElementById("productImage").alt = `${name} primary product image`;
-    document.getElementById("productCategory").textContent = `${category} linen`;
-    document.querySelectorAll(".section-copy")[0].textContent = detailContent?.description || "This detail page now follows the same modern visual system as the catalogue pages, while still preserving the simple product-detail flow already present in your site.";
-    document.querySelectorAll(".section-copy")[1].textContent = detailContent?.images?.length
-      ? "Use the thumbnail rail to browse every supplied product photo while keeping the main image large and easy to inspect."
-      : "The product artwork is generated locally from the chosen category and theme, keeping the experience visually rich without needing external stock photos.";
+    const productName = document.getElementById("productName");
+    const productImage = document.getElementById("productImage");
+    const productCategory = document.getElementById("productCategory");
+    const productSubtitle = document.getElementById("productSubtitle");
+    const productLead = document.getElementById("productLead");
+    const productHighlights = document.getElementById("productHighlights");
+    const productNarrative = document.getElementById("productNarrative");
+    const productSpecsSection = document.getElementById("productSpecsSection");
+    const productSpecsTable = document.getElementById("productSpecsTable");
+
+    productName.textContent = name;
+    productImage.src = galleryImages[0];
+    productImage.alt = `${name} primary product image`;
+    productCategory.textContent = `${category} linen`;
+    productSubtitle.textContent = detailContent?.subtitle || "Product detail";
+    productLead.textContent = detailContent?.description || "Use the gallery to review the available product images and return to the matching catalogue page when ready.";
+
+    const highlights = detailContent?.highlights?.length
+      ? detailContent.highlights
+      : [
+          { title: "Category", value: `${category} linen` },
+          { title: "Theme", value: theme },
+          { title: "Navigation", value: "Returns directly to the matching catalogue section." }
+        ];
+
+    highlights.forEach((item) => {
+      const card = document.createElement("div");
+      card.className = "spec-card";
+      card.innerHTML = `<strong>${item.title}</strong><span class="muted-copy">${item.value}</span>`;
+      productHighlights.appendChild(card);
+    });
+
+    if (detailContent?.sections?.length) {
+      detailContent.sections.forEach((section) => {
+        const article = document.createElement("article");
+        article.className = "detail-story-block";
+        article.innerHTML = `<h3>${section.title}</h3><p>${section.body}</p>`;
+        productNarrative.appendChild(article);
+      });
+    } else {
+      productNarrative.style.display = "none";
+    }
+
+    if (detailContent?.specTable?.length) {
+      detailContent.specTable.forEach((row) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `<th scope="row">${row.label}</th><td>${row.value}</td>`;
+        productSpecsTable.appendChild(tr);
+      });
+    } else {
+      productSpecsSection.style.display = "none";
+    }
 
     const backLink = document.getElementById("backLink");
     backLink.href = category === "hotel" ? "hotel-linen.html" : "hospital-linen.html";
 
-    const productImage = document.getElementById("productImage");
     const thumbs = document.getElementById("productThumbs");
 
     function setActiveImage(imageSrc, button) {
