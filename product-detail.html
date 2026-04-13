@@ -36,8 +36,11 @@
       <div class="detail-panel">
         <div class="row g-4 align-items-center">
           <div class="col-lg-6">
-            <div class="detail-image-wrap">
-              <img id="productImage" src="" alt="Product artwork" />
+            <div class="detail-gallery">
+              <div id="productThumbs" class="detail-thumbs" aria-label="Product image options"></div>
+              <div class="detail-image-wrap">
+                <img id="productImage" src="" alt="Product artwork" />
+              </div>
             </div>
           </div>
           <div class="col-lg-6">
@@ -73,6 +76,27 @@
   </main>
 
   <script>
+    const productMedia = {
+      hospital: {
+        "OT Green Cap (Autoclavable)": {
+          images: [
+            "assets/OT_GREEN_CAP_1.jpeg",
+            "assets/OT_GREEN_CAP_2.jpeg",
+            "assets/OT_GREEN_CAP_3.jpeg",
+            "assets/OT_GREEN_CAP_4.jpeg"
+          ],
+          description: "Autoclavable OT green cap with a swipeable image gallery so buyers can review every supplied product photo."
+        },
+        "OT Green Mask (Autoclavable)": {
+          images: [
+            "assets/OT_GREEN_MASK_1.jpeg",
+            "assets/OT_GREEN_MASK_2.jpeg"
+          ],
+          description: "Autoclavable OT green mask presented with the same gallery layout for quick image browsing."
+        }
+      }
+    };
+
     function createProductArt(name, accent, theme, category) {
       const safeName = name.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
       const base = category === "hotel" ? "#173456" : "#143b63";
@@ -101,13 +125,50 @@
     const theme = params.get("theme") || "default";
     const accent = decodeURIComponent(params.get("accent") || "#2fcfc5");
     const category = (params.get("category") || "hospital").toLowerCase();
+    const detailContent = productMedia[category]?.[name];
+    const galleryImages = detailContent?.images?.length
+      ? detailContent.images
+      : [createProductArt(name, accent, theme, category)];
 
     document.getElementById("productName").textContent = name;
-    document.getElementById("productImage").src = createProductArt(name, accent, theme, category);
+    document.getElementById("productImage").src = galleryImages[0];
+    document.getElementById("productImage").alt = `${name} primary product image`;
     document.getElementById("productCategory").textContent = `${category} linen`;
+    document.querySelectorAll(".section-copy")[0].textContent = detailContent?.description || "This detail page now follows the same modern visual system as the catalogue pages, while still preserving the simple product-detail flow already present in your site.";
+    document.querySelectorAll(".section-copy")[1].textContent = detailContent?.images?.length
+      ? "Use the thumbnail rail to browse every supplied product photo while keeping the main image large and easy to inspect."
+      : "The product artwork is generated locally from the chosen category and theme, keeping the experience visually rich without needing external stock photos.";
 
     const backLink = document.getElementById("backLink");
     backLink.href = category === "hotel" ? "hotel-linen.html" : "hospital-linen.html";
+
+    const productImage = document.getElementById("productImage");
+    const thumbs = document.getElementById("productThumbs");
+
+    function setActiveImage(imageSrc, button) {
+      productImage.src = imageSrc;
+      productImage.alt = `${name} product image`;
+      thumbs.querySelectorAll(".detail-thumb").forEach((thumb) => {
+        thumb.classList.toggle("active", thumb === button);
+        thumb.setAttribute("aria-pressed", thumb === button ? "true" : "false");
+      });
+    }
+
+    galleryImages.forEach((imageSrc, index) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = `detail-thumb${index === 0 ? " active" : ""}`;
+      button.setAttribute("aria-label", `${name} image ${index + 1}`);
+      button.setAttribute("aria-pressed", index === 0 ? "true" : "false");
+
+      const image = document.createElement("img");
+      image.src = imageSrc;
+      image.alt = `${name} thumbnail ${index + 1}`;
+      button.appendChild(image);
+
+      button.addEventListener("click", () => setActiveImage(imageSrc, button));
+      thumbs.appendChild(button);
+    });
   </script>
 </body>
 </html>

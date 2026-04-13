@@ -72,7 +72,7 @@
               <li><a href="coming-soon.html">Home Linen</a></li>
             </ul>
             <div class="sidebar-note">
-              Browse the same catalogue structure with a more premium card layout and locally generated visual artwork.
+              Browse the same catalogue structure with a more premium card layout, now mixing supplied product photos with clean visual placeholders where needed.
             </div>
           </div>
         </aside>
@@ -81,7 +81,7 @@
             <div class="section-header mb-4">
               <span class="eyebrow">Featured Range</span>
               <h2 class="mb-2">Institution-ready products with a sharper visual experience.</h2>
-              <p class="section-copy mb-0">Each product card now uses original in-browser SVG visuals instead of third-party photos, keeping the site cleaner and safer to reuse.</p>
+              <p class="section-copy mb-0">Selected products now use your supplied catalogue photos, while the remaining items keep the clean illustration-based presentation.</p>
             </div>
             <div class="row g-4" id="hospitalProducts"></div>
           </div>
@@ -92,8 +92,20 @@
 
   <script>
     const hospitalProducts = [
-      { name: "OT Green Cap (Autoclavable)", theme: "surgical", accent: "#2fcfc5", note: "Reusable theatre-ready headwear with clean detailing." },
-      { name: "OT Green Mask (Autoclavable)", theme: "mask", accent: "#1fa89f", note: "Protective essentials styled for sterile workflows." },
+      {
+        name: "OT Green Cap (Autoclavable)",
+        theme: "surgical",
+        accent: "#2fcfc5",
+        note: "Reusable theatre-ready headwear with clean detailing.",
+        catalogueImage: "assets/OT_GREEN_CAP_1.jpeg"
+      },
+      {
+        name: "OT Green Mask (Autoclavable)",
+        theme: "mask",
+        accent: "#1fa89f",
+        note: "Protective essentials styled for sterile workflows.",
+        catalogueImage: "assets/OT_GREEN_MASK_1.jpeg"
+      },
       { name: "Dental Patient Apron", theme: "apron", accent: "#d99a6c", note: "Easy-care patient coverage with a polished presentation." },
       { name: "OT Gown Casement Fabric", theme: "gown", accent: "#4ac8bd", note: "Structured fabric illustration for theatre apparel collections." },
       { name: "Patient Maternity Gown", theme: "patient", accent: "#e8ad7a", note: "Comfort-first garment visual for maternity care requirements." },
@@ -133,12 +145,12 @@
     const hospitalGrid = document.getElementById("hospitalProducts");
     hospitalProducts.forEach((product, index) => {
       const slug = encodeURIComponent(product.name);
-      const image = createProductArt(product.name, product.accent, product.theme);
+      const image = product.catalogueImage || createProductArt(product.name, product.accent, product.theme);
       hospitalGrid.innerHTML += `
         <div class="col-md-6 col-xl-4">
           <a href="product-detail.html?category=hospital&name=${slug}&theme=${product.theme}&accent=${encodeURIComponent(product.accent)}" class="text-decoration-none text-dark">
             <article class="product-card">
-              <div class="product-art">
+              <div class="product-art${product.catalogueImage ? " product-art-photo" : ""}">
                 <img src="${image}" alt="${product.name}" />
               </div>
               <h3>${index + 1}. ${product.name}</h3>
